@@ -1,0 +1,30 @@
+{% extends 'organizations/base.html' %}
+
+{% block page_title %}
+    Изменение данных организации
+{% endblock %}
+
+{% block article_title %}
+   Изменение данных организации
+{% endblock %}
+
+{% block content %}
+    В представленной форме исправьте необходимую информацию.
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'organizations' %}" class="btn btn-primary my-2">Назад</a>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-lg-6 col-md-8 mx-auto" style="width: 100%;">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.name }}<br>
+            <button type="submit" class="btn btn-success">Изменить</button><br>
+            <span>{{ error }}</span>
+        </form>
+    </div>
+</div>
+{% endblock %}

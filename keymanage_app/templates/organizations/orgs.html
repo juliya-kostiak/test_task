@@ -14,17 +14,20 @@
 
 {% block links %}
     <a href="{% url 'index' %}" class="btn btn-primary my-2">Главная</a>
+    <a class="btn btn-success" href="{% url 'add_org' %}" role="button">Добавить</a>
 {% endblock %}
 
 {% block main %}
-
-{% for org in orgs %}
-    <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
-        <h3> # {{ org.name }}</h3>
-        <a class="btn btn-primary" href="#" role="button">Изменить</a>
-        <a class="btn btn-danger" href="#" role="button">Удалить</a>
-    </div>
-{% endfor %}
-
+{% if orgs %}
+    {% for org in orgs %}
+        <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
+            <h3> # {{ org.name }}</h3>
+            <a class="btn btn-primary" href="{% url 'update_org' pk=org.id %}" role="button">Изменить</a>
+            <a class="btn btn-danger" href="{% url 'delete_org' pk=org.id %}" role="button">Удалить</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>У нас нет записей!</p>
+{% endif %}
 
 {% endblock %}

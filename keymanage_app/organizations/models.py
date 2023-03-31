@@ -8,6 +8,9 @@ class Organization (models.Model):
         verbose_name = "Организация"
         verbose_name_plural = "Организации"
 
+    def get_absolute_url(self):
+        return '/organizations'
+
     def __str__(self):
         return self.name
 

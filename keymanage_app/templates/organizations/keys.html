@@ -14,28 +14,32 @@
 
 {% block links %}
     <a href="{% url 'index' %}" class="btn btn-primary my-2">Главная</a>
+    <a class="btn btn-success" href="{% url 'add_key' %}" role="button">Добавить</a>
 {% endblock %}
 
 {% block main %}
 
-{% for key in keys %}
-    <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
-        <h3> # {{ key.key }}</h3>
-        {% for org in orgs %}
-            {% if org.id == key.id_org_id %}
-                <h6> Владелец: {{ org.name }} </h6>
+{% if keys%}
+    {% for key in keys %}
+        <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
+            <h3> # {{ key.key }}</h3>
+            {% for org in orgs %}
+                {% if org.id == key.id_org_id %}
+                    <h6> Владелец: {{ org.name }} </h6>
+                {% endif %}
+            {% endfor %}
+            <h6>Срок действия: c {{key.start_date}} по {{key.end_date}}</h6>
+            {% if key.block %}
+                <p>Статус: заблокирован</p>
+            {% else %}
+                <p>Статус: открыт</p>
             {% endif %}
-        {% endfor %}
-        <h6>Срок действия: c {{key.start_date}} по {{key.end_date}}</h6>
-        {% if key.block %}
-            <p>Статус: заблокирован</p>
-        {% else %}
-            <p>Статус: открыт</p>
-        {% endif %}
-        <a class="btn btn-primary" href="#" role="button">Изменить</a>
-        <a class="btn btn-danger" href="#" role="button">Удалить</a>
-    </div>
-{% endfor %}
-
+            <a class="btn btn-primary" href="#" role="button">Изменить</a>
+            <a class="btn btn-danger" href="#" role="button">Удалить</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>У нас нет записей!</p>
+{% endif %}
 
 {% endblock %}

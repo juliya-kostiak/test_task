@@ -1,7 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from .forms import OrganizationForm, KeysForm
 from .models import Organization, Keys
-from django.views.decorators.http import require_http_methods
+from django.views.generic import UpdateView, DeleteView
 
 
 def index(request):
@@ -19,19 +19,61 @@ def keys(request):
     return render(request, 'organizations/keys.html', {'keys': key, 'orgs': org})
 
 
-@require_http_methods(['POST'])
 def add_org(request):
-    name = request.POST['title']
-    org = Organization(name=name)
-    org.save()
-    return redirect('index')
+    error = ''
+    if request.method == 'POST':
+        form = OrganizationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('organizations')
+        else:
+            error = 'Данные были введены неверно'
+    form = OrganizationForm()
+    context = {
+        'form': form,
+        'error': error,
+    }
+    return render(request, 'organizations/add_org.html', context)
 
 
-def update_org(request, org_id, name):
-    org = Organization.objects.get(id=org_id)
-    org.name = Organization(name=name)
-    org.save()
-    return redirect('index')
+def add_key(request):
+    org = Organization.objects.all()
+    error = ''
+    if request.method == 'POST':
+        form = KeysForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('keys')
+        else:
+            error = 'Данные были введены неверно'
+    form = KeysForm()
+    context = {
+        'form': form,
+        'error': error,
+        'orgs': org,
+    }
+    return render(request, 'organizations/add_key.html', context)
+
+
+class UpdateOrg(UpdateView):
+    model = Organization
+    template_name = "organizations/update_org.html"
+    form_class = OrganizationForm
+
+
+class DeleteOrg(DeleteView):
+    model = Organization
+    template_name = "organizations/delete_org.html"
+    success_url = '/organizations/'
+
+
+
+
+
+
+
+
+
 
 
 def delete_org(request, org_id):

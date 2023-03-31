@@ -1,0 +1,31 @@
+{% extends 'organizations/base.html' %}
+
+{% block page_title %}
+    Удаление организации
+{% endblock %}
+
+{% block article_title %}
+   Удаление организации
+{% endblock %}
+
+{% block content %}
+    Ниже у Вас есть возможность удалить организацию.
+{% endblock %}
+
+{% block links %}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-lg-6 col-md-8 mx-auto" style="width: 100%;">
+        <form method="post">
+            {% csrf_token %}
+            <label>Вы действительно хотите удалить организацию? </label><br><br>
+            <button type="submit" class="btn btn-success">Удалить</button>
+            <a href="{% url 'organizations' %}" class="btn btn-primary my-2">Назад</a>
+            <span>{{ error }}</span>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
