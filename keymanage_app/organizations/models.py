@@ -13,16 +13,13 @@ class Organization (models.Model):
 
 
 class Keys (models.Model):
-    key = models.UUIDField()
-    start_date = models.DateField()
-    end_date = models.DateField()
-    id_org = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    block = models.BooleanField(default=False)
+    key = models.UUIDField("Ключ")
+    start_date = models.DateField("Дата начала действия")
+    end_date = models.DateField("Дата окончания действия")
+    id_org = models.ForeignKey(Organization, verbose_name='Организация', on_delete=models.CASCADE)
+    block = models.BooleanField("Блокировка", default=False)
 
     class Meta:
         verbose_name = "Ключ"
         verbose_name_plural = "Ключи"
-
-    def __str__(self):
-        return self.key
 
