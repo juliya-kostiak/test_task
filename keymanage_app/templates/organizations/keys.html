@@ -35,7 +35,7 @@
                 <p>Статус: открыт</p>
             {% endif %}
             <a class="btn btn-primary" href="#" role="button">Изменить</a>
-            <a class="btn btn-danger" href="#" role="button">Удалить</a>
+            <a class="btn btn-danger" href="{% url 'delete_key' pk=key.id %}" role="button">Удалить</a>
         </div>
     {% endfor %}
 {% else %}

@@ -26,3 +26,6 @@ class Keys (models.Model):
         verbose_name = "Ключ"
         verbose_name_plural = "Ключи"
 
+    def get_absolute_url(self):
+        return '/keys'
+

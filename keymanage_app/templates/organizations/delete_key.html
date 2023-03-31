@@ -1,15 +1,15 @@
 {% extends 'organizations/base.html' %}
 
 {% block page_title %}
-    Удаление организации
+    Удаление ключа
 {% endblock %}
 
 {% block article_title %}
-   Удаление организации
+   Удаление ключа
 {% endblock %}
 
 {% block content %}
-    Ниже у Вас есть возможность удалить организацию.
+    Ниже у Вас есть возможность удалить ключ.
 {% endblock %}
 
 {% block links %}
@@ -20,9 +20,9 @@
     <div class="col-lg-6 col-md-8 mx-auto" style="width: 100%;">
         <form method="post">
             {% csrf_token %}
-            <label>Вы действительно хотите удалить организацию? </label><br><br>
+            <label>Вы действительно хотите удалить ключ? </label><br><br>
             <button type="submit" class="btn btn-success">Удалить</button>
-            <a href="{% url 'organizations' %}" class="btn btn-primary my-2">Назад</a>
+            <a href="{% url 'keys' %}" class="btn btn-primary my-2">Назад</a>
         </form>
     </div>
 </div>

@@ -67,6 +67,10 @@ class DeleteOrg(DeleteView):
     success_url = '/organizations/'
 
 
+class DeleteKeys(DeleteView):
+    model = Keys
+    template_name = "organizations/delete_key.html"
+    success_url = '/keys/'
 
 
 
