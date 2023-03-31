@@ -1,0 +1,30 @@
+{% extends 'organizations/base.html' %}
+
+{% block page_title %}
+    Организации
+{% endblock %}
+
+{% block article_title %}
+    Организации
+{% endblock %}
+
+{% block content %}
+    Ниже представлен список организаций.
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'index' %}" class="btn btn-primary my-2">Главная</a>
+{% endblock %}
+
+{% block main %}
+
+{% for org in orgs %}
+    <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
+        <h3> # {{ org.name }}</h3>
+        <a class="btn btn-primary" href="#" role="button">Изменить</a>
+        <a class="btn btn-danger" href="#" role="button">Удалить</a>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

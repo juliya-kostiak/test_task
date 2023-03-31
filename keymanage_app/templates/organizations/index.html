@@ -1,36 +1,22 @@
-{% extends 'organizations/layout.html' %}
-{% load static %}
+{% extends 'organizations/base.html' %}
 
-{% block title %}
-<title>Главная страница</title>
-{% endblock title %}
+{% block page_title %}
+    Главная страница
+{% endblock %}
+
+{% block article_title %}
+    Главная страница
+{% endblock %}
 
 {% block content %}
+    Далее располагаются кнопки для просмотра организаций и ключей
+{% endblock %}
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Организации</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Ключи</a>
-  </li>
-</ul>
+{% block links %}
+    <a href="{% url 'organizations' %}" class="btn btn-primary my-2">Организации</a>
+    <a href="{% url 'keys' %}" class="btn btn-secondary my-2">Ключи</a>
+{% endblock %}
 
-<ul class="list-group list-group-flush">
-    {% for org in orgs %}
-        <li class="list-group-item">
-            №{{ org.id }} {{ org.name }}
-            <br><br><button type="button" class="btn btn-outline-primary">Изменить</button>
-            <button type="button" class="btn btn-outline-danger" onclick="{ url 'delete_org' }">Удалить</button>
-        </li>
+{% block main %}
 
-    {% endfor %}
-</ul>
-
-
-<!--{% for key in keys %}-->
-<!--    <p>{{ key.key }}</p>-->
-<!--{% endfor %}-->
-
-
-{% endblock content %}
+{% endblock %}

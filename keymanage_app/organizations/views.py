@@ -1,12 +1,22 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Organization, Keys
 from django.views.decorators.http import require_http_methods
 
 
 def index(request):
-    orgs = Organization.objects.all()
-    keys = Keys.objects.all()
-    return render(request, 'organizations/index.html', {'orgs': orgs, 'keys': keys})
+    return render(request, 'organizations/index.html')
+
+
+def organizations(request):
+    org = Organization.objects.all()
+    return render(request, 'organizations/orgs.html', {'orgs': org})
+
+
+def keys(request):
+    key = Keys.objects.all()
+    org = Organization.objects.all()
+    return render(request, 'organizations/keys.html', {'keys': key, 'orgs': org})
 
 
 @require_http_methods(['POST'])

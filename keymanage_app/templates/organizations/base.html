@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block page_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="organization/css/style.css">
+</head>
+<body>
+    <div class="row py-lg-5" style="width: 100%; margin-bottom: -30px;">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light" style="text-align: center;">{% block article_title %}{% endblock %}</h1>
+        <p class="lead text-body-secondary" style="text-align: center;">{% block content %}{% endblock %}</p>
+        <p style="text-align: center;">
+            {% block links %}{% endblock %}
+        </p>
+      </div>
+    </div>
+    {% block main %} {% endblock %}
+</body>
