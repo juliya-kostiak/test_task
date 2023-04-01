@@ -19,7 +19,10 @@
 
 {% block main %}
 <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
-    <div class="dropdown">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="dropdown" style='margin-right: 30px;'>
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Фильтр по владельцам
         </button>
@@ -28,8 +31,19 @@
                 <li><a class="dropdown-item" href="{% url 'filter_key' org.id  %}">{{ org.name }}</a></li>
             {% endfor %}
         </ul>
+      </div>
+      <form class="d-flex" role="search" action="{% url 'keys' %}">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+          <button class="btn btn-outline-success" type="submit">Поиск</button>
+          {% if back %}
+            <span style="margin-left: 10px;"><a href="{% url 'keys' %}" class="btn btn-primary">Назад</a></span>
+          {% endif %}
+      </form>
     </div>
+  </div>
+</nav>
 </div>
+
 {% if keys%}
     {% for key in keys %}
         <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">

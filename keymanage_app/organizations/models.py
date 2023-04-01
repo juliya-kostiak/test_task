@@ -20,7 +20,7 @@ class Keys (models.Model):
     start_date = models.DateField("Дата начала действия")
     end_date = models.DateField("Дата окончания действия")
     id_org = models.ForeignKey(Organization, verbose_name='Организация', on_delete=models.CASCADE)
-    block = models.BooleanField("Блокировка", default=False)
+    block = models.BooleanField("Блокировка", default=True)
 
     class Meta:
         verbose_name = "Ключ"

@@ -15,11 +15,22 @@ def organizations(request):
 
 
 def keys(request):
-    key = Keys.objects.all()
+    search_query = request.GET.get('search', '')
+    back = ''
+    if search_query:
+        key = Keys.objects.filter(key__icontains=search_query)
+        back = 'ok'
+    else:
+        key = Keys.objects.all().order_by("-id")
+
+
+
+
     org = Organization.objects.all()
     context = {
         'keys': key,
         'orgs': org,
+        'back': back,
     }
     return render(request, 'organizations/keys.html', context)
 
