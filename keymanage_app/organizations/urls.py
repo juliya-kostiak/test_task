@@ -10,4 +10,6 @@ urlpatterns = [
     path("organizations/<int:pk>/update", views.UpdateOrg.as_view(), name="update_org"),
     path("organizations/<int:pk>/delete", views.DeleteOrg.as_view(), name="delete_org"),
     path("keys/<int:pk>/delete", views.DeleteKeys.as_view(), name="delete_key"),
+    path("keys/<int:pk>/update", views.UpdateKey.as_view(), name="update_key"),
+    path("keys/<str:id_org>/filter", views.filter_key, name="filter_key"),
 ]

@@ -1,35 +1,24 @@
 {% extends 'organizations/base.html' %}
 
 {% block page_title %}
-    Ключи
+    Ключи (фильтр)
 {% endblock %}
 
 {% block article_title %}
-    Ключи
+    Ключи (фильтр)
 {% endblock %}
 
 {% block content %}
-    Ниже представлен список ключей.
+    Ниже представлен отфильтрованный список ключей.
 {% endblock %}
 
 {% block links %}
     <a href="{% url 'index' %}" class="btn btn-primary my-2">Главная</a>
-    <a class="btn btn-success" href="{% url 'add_key' %}" role="button">Добавить</a>
+    <a href="{% url 'keys' %}" class="btn btn-primary my-2">Назад</a>
 {% endblock %}
 
 {% block main %}
-<div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Фильтр по владельцам
-        </button>
-        <ul class="dropdown-menu">
-            {% for org in orgs %}
-                <li><a class="dropdown-item" href="{% url 'filter_key' org.id  %}">{{ org.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+
 {% if keys%}
     {% for key in keys %}
         <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
@@ -52,7 +41,6 @@
             {% else %}
                 <button class="btn btn-secondary" onclick="#" role="button">Блокировать</button>
             {% endif %}
-
         </div>
     {% endfor %}
 {% else %}

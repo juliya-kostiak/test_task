@@ -1,0 +1,39 @@
+{% extends 'organizations/base.html' %}
+
+{% block page_title %}
+    Изменение данных ключа
+{% endblock %}
+
+{% block article_title %}
+   Изменение данных ключа
+{% endblock %}
+
+{% block content %}
+    В представленной форме исправьте необходимую информацию.
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'keys' %}" class="btn btn-primary my-2">Назад</a>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-lg-6 col-md-8 mx-auto" style="width: 100%;">
+        <form method="post">
+            {% csrf_token %}
+            <label>Ключ: </label>
+            {{ form.key }}<br>
+            <label>Дату начала: </label>
+            {{ form.start_date }}<br>
+            <label>Дату окончания: </label>
+            {{ form.end_date }}<br>
+            <label>Организация-владелец: </label>
+            {{ form.id_org }}<br>
+            <label>Заблокирован (да,нет): </label>
+            {{ form.block }}<br><br>
+            <button type="submit" class="btn btn-success">Изменить</button><br><br>
+            <span>{{ error }}</span><br><br>
+        </form>
+    </div>
+</div>
+{% endblock %}

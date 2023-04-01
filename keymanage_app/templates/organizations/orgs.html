@@ -21,7 +21,7 @@
 {% if orgs %}
     {% for org in orgs %}
         <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 30px;">
-            <h3> # {{ org.name }}</h3>
+            <h3> # {{ org.id }} {{ org.name }}</h3>
             <a class="btn btn-primary" href="{% url 'update_org' pk=org.id %}" role="button">Изменить</a>
             <a class="btn btn-danger" href="{% url 'delete_org' pk=org.id %}" role="button">Удалить</a>
         </div>
