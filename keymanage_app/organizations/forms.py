@@ -42,5 +42,17 @@ class KeysForm(ModelForm):
         }
 
 
+class KeysBlockForm(ModelForm):
+    class Meta:
+        org = Organization.objects.all()
+        model = Keys
+        fields = ["block"]
+        widgets = {
+            'block': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите 1(открыт)/0(заблокировать)',
+            }),
+        }
+
 
 

@@ -12,4 +12,5 @@ urlpatterns = [
     path("keys/<int:pk>/delete", views.DeleteKeys.as_view(), name="delete_key"),
     path("keys/<int:pk>/update", views.UpdateKey.as_view(), name="update_key"),
     path("keys/<str:id_org>/filter", views.filter_key, name="filter_key"),
+    path("keys/<int:pk>/update_block", views.UpdateKeyBlock.as_view(), name="update_keyblock"),
 ]

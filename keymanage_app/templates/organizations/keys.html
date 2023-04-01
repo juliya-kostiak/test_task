@@ -41,18 +41,17 @@
             {% endfor %}
             <h6>Срок действия: c {{key.start_date}} по {{key.end_date}}</h6>
             {% if key.block %}
-                <p>Статус: заблокирован</p>
-            {% else %}
                 <p>Статус: открыт</p>
+            {% else %}
+                <p>Статус: заблокирован</p>
             {% endif %}
             <a class="btn btn-primary" href="{% url 'update_key' pk=key.id %}" role="button">Изменить</a>
             <a class="btn btn-danger" href="{% url 'delete_key' pk=key.id %}" role="button">Удалить</a>
             {% if key.block %}
-                <button class="btn btn-secondary" onclick="#" role="button">Разблокировать</button>
+                <a class="btn btn-secondary" href="{% url 'update_keyblock' pk=key.id %}" role="button">Блокировать</a>
             {% else %}
-                <button class="btn btn-secondary" onclick="#" role="button">Блокировать</button>
+                <a class="btn btn-secondary" href="{% url 'update_keyblock' pk=key.id %}" role="button">Разблокировать</a>
             {% endif %}
-
         </div>
     {% endfor %}
 {% else %}

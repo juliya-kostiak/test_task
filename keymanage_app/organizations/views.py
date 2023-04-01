@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import OrganizationForm, KeysForm
+from .forms import OrganizationForm, KeysForm, KeysBlockForm
 from .models import Organization, Keys
 from django.views.generic import UpdateView, DeleteView, ListView
 
@@ -70,6 +70,12 @@ def filter_key(request, id_org):
     return render(request, 'organizations/filter_key.html', context)
 
 
+class UpdateKeyBlock(UpdateView):
+    model = Keys
+    template_name = "organizations/update_keyblock.html"
+    form_class = KeysBlockForm
+
+
 class UpdateOrg(UpdateView):
     model = Organization
     template_name = "organizations/update_org.html"
@@ -93,10 +99,3 @@ class DeleteKeys(DeleteView):
     model = Keys
     template_name = "organizations/delete_key.html"
     success_url = '/keys/'
-
-
-
-
-
-
-

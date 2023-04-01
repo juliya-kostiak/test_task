@@ -1,0 +1,30 @@
+{% extends 'organizations/base.html' %}
+
+{% block page_title %}
+    (Раз)Блокировка ключа
+{% endblock %}
+
+{% block article_title %}
+   (Раз)Блокировка ключа
+{% endblock %}
+
+{% block content %}
+    В представленной форме заблокируйте/разблокирйте ключ.
+{% endblock %}
+
+{% block links %}
+    <a href="{% url 'keys' %}" class="btn btn-primary my-2">Назад</a>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="col-lg-6 col-md-8 mx-auto" style="width: 100%;">
+        <form method="post">
+            {% csrf_token %}
+            <label>Введите 1(разблокировать)/0(блокировать)</label>
+            {{ form.block }}<br><br>
+            <button type="submit" class="btn btn-success">ОК</button><br><br>
+        </form>
+    </div>
+</div>
+{% endblock %}
