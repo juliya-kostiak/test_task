@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    В представленной форме заблокируйте/разблокирйте ключ.
+    В представленной форме заблокируйте/разблокируйте ключ.
 {% endblock %}
 
 {% block links %}
@@ -22,7 +22,7 @@
         <form method="post">
             {% csrf_token %}
             <label>Введите 1(разблокировать)/0(блокировать)</label>
-            {{ form.block }}<br><br>
+            <br>{{ form.block }}<br>
             <button type="submit" class="btn btn-success">ОК</button><br><br>
         </form>
     </div>

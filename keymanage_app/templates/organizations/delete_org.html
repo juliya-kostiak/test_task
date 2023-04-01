@@ -21,7 +21,7 @@
         <form method="post">
             {% csrf_token %}
             <label>Вы действительно хотите удалить организацию? </label><br><br>
-            <button type="submit" class="btn btn-success">Удалить</button>
+            <button type="submit" class="btn btn-danger">Удалить</button>
             <a href="{% url 'organizations' %}" class="btn btn-primary my-2">Назад</a>
         </form>
     </div>

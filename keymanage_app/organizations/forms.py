@@ -18,7 +18,7 @@ class KeysForm(ModelForm):
     class Meta:
         org = Organization.objects.all()
         model = Keys
-        fields = ["key", "start_date", "end_date", "id_org", "block"]
+        fields = ["key", "start_date", "end_date", "id_org"]
         widgets = {
             'key': TextInput(attrs={
                 'class': 'form-control',
@@ -35,9 +35,6 @@ class KeysForm(ModelForm):
             'id_org': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите организацию-владельца',
-            }),
-            'block': TextInput(attrs={
-                'type': 'checkbox',
             }),
         }
 

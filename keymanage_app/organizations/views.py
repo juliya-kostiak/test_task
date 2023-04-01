@@ -10,7 +10,7 @@ def index(request):
 
 
 def organizations(request):
-    org = Organization.objects.all()
+    org = Organization.objects.all().order_by("id")
     return render(request, 'organizations/orgs.html', {'orgs': org})
 
 
