@@ -22,8 +22,10 @@
         <form method="post">
             {% csrf_token %}
 
-            <h4>Вы хотите изменить статус?
-            {{ form.block }}</h4><br>
+            <h4>Вы хотите изменить статус?</h4>
+            <p><i>(галочку поставить, если статус - открыт;</i></p>
+            <p><i> галочку убрать, если статус - заблокирован)</i></p>
+            {{ form.block }}<br>
             <button type="submit" class="btn btn-success">ОК</button><br><br>
         </form>
     </div>
