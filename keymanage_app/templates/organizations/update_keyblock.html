@@ -21,8 +21,9 @@
     <div class="col-lg-6 col-md-8 mx-auto" style="width: 100%;">
         <form method="post">
             {% csrf_token %}
-            <label>Введите 1(разблокировать)/0(блокировать)</label>
-            <br>{{ form.block }}<br>
+
+            <h4>Вы хотите изменить статус?
+            {{ form.block }}</h4><br>
             <button type="submit" class="btn btn-success">ОК</button><br><br>
         </form>
     </div>

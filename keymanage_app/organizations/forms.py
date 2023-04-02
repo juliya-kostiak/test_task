@@ -1,5 +1,5 @@
 from .models import Organization, Keys
-from django.forms import ModelForm, TextInput, DateInput, CheckboxInput
+from django.forms import ModelForm, TextInput, DateInput, CheckboxInput, Select
 
 
 class OrganizationForm(ModelForm):
@@ -32,7 +32,7 @@ class KeysForm(ModelForm):
                 'class': 'form-control',
                 'type': 'date',
             }),
-            'id_org': TextInput(attrs={
+            'id_org': Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите организацию-владельца',
             }),
@@ -45,11 +45,6 @@ class KeysBlockForm(ModelForm):
         model = Keys
         fields = ["block"]
         widgets = {
-            'block': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите 1(открыт)/0(заблокировать)',
+            'block': CheckboxInput(attrs={
             }),
         }
-
-
-
